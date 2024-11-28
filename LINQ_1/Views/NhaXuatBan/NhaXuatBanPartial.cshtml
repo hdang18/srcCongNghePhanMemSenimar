@@ -1,0 +1,15 @@
+﻿@using LINQ_1.Models
+@model List<NhaXuatBan>
+
+<div>
+    @foreach (NhaXuatBan item in Model)
+    {
+    <p class="list-group-item">
+        @*<li class="list-group-item">*@
+       
+        @Html.ActionLink(item.TenNXB.ToUpper(), "DSSTheoNXB", "NhaXuatBan", new { id = item.MaNXB }, new { style = "text-transform:uppercase; text-decoration:none;" })
+
+        @*</li>*@
+    </p>
+    }
+</div>

@@ -1,0 +1,100 @@
+﻿
+@using LINQ_1.Models
+@model Sach
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .book-image img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .book-details {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .book-title {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .book-details p {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .book-details strong {
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+            .buttons .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+                transition: background-color 0.2s;
+                border: none;
+                cursor: pointer;
+            }
+
+                .buttons .btn:hover {
+                    background-color: #0056b3;
+                }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="book-image">
+            <img src="~/HinhAnhSP/@Model.AnhBia" alt="Book Cover">
+        </div>
+        <div class="book-details">
+            <h2 class="book-title">@Model.TenSach</h2>
+            <p><strong>Tên Chủ Đề:</strong>@Model.ChuDe.TenChuDe</p>
+            <p><strong>Tên NXB:</strong> @Model.NhaXuatBan.TenNXB</p>
+            <p><strong>Nội dung Tóm tắt:</strong>@Model.MoTa</p>
+            <p><strong>Giá bán:</strong> @Model.GiaBan VNĐ</p>
+            <div class="buttons">
+                <a href="@Url.Action("ThemGioHang", "Sach", new { id = Model.MaSach, strURL = "/Sach/XemChiTiet/" + Model.MaSach })"><btn class="btn">MUA NGAY</btn></a>
+                <a href="@Url.Action("DanhSachSach","Sach")"><button class="btn">MUA TIẾP</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
